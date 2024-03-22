@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón Latiente con Fondo Animado</title>
+    <!-- Estilos CSS -->
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: radial-gradient(circle, #000000 10%, #000000 30%, #0f0c29 50%, #302b63 70%, #24243e);
+            background-size: 800% 800%;
+            animation: gradientBG 15s ease infinite, flicker 3s linear infinite;
+        }
+
+        .corazon {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: latido 1s infinite;
+            z-index: 1;
+        }
+
+        .corazon:before,
+        .corazon:after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .corazon:before {
+            top: -50px;
+            left: 0;
+        }
+
+        .corazon:after {
+            top: 0;
+            left: 50px;
+        }
+
+        .texto {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .button {
+            margin-top: 20px; /* Ajuste la distancia entre el corazón y el botón */
+        }
+
+        .boton {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: parpadeo 1.5s infinite;
+            z-index: 2;
+        }
+
+        @keyframes latido {
+            0%, 100% {
+                transform: scale(1) rotate(-45deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(-45deg);
+            }
+        }
+
+        @keyframes parpadeo {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 1;
+            }
+            5%, 95% {
+                opacity: 0.9;
+            }
+            10%, 90% {
+                opacity: 0.8;
+            }
+            15%, 85% {
+                opacity: 0.7;
+            }
+            20%, 80% {
+                opacity: 0.6;
+            }
+            25%, 75% {
+                opacity: 0.5;
+            }
+            30%, 70% {
+                opacity: 0.4;
+            }
+            35%, 65% {
+                opacity: 0.3;
+            }
+            40%, 60% {
+                opacity: 0.2;
+            }
+            45%, 55% {
+                opacity: 0.1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="corazon">
+        <div class="texto">TE QUIERO MUCHO</div>
+    </div>
+    <div class="button">
+        <button onclick="redireccionar()" class="boton">NO TOCAR</button>
+    </div>
+
+    <!-- Script de redireccionamiento -->
+    <script>
+        function redireccionar() {
+            window.location.href = "lo_se.html"; // Reemplaza 'FLORES.html' con la URL de la página a la que deseas redirigir
+        }
+    </script>
+    <script>
+        // Reanudar la reproducción si estaba activa en la página anterior
+        window.addEventListener('DOMContentLoaded', function() {
+            var isAudioPlaying = localStorage.getItem('audioPlaying');
+            if (isAudioPlaying === 'true') {
+                var audioPlayer = document.getElementById('audioPlayer');
+                audioPlayer.play();
+            }
+        });
+    </script>
+    
+</body>
+</html>
